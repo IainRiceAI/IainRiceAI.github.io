@@ -23,3 +23,4 @@ npm run build
 4. Add the workflow in `.github/workflows/deploy.yml` from Astro's GitHub Pages guide, or use Astro's standard GitHub Pages action.
 
 Update `astro.config.mjs` with your real GitHub Pages URL.
+<!-- rebuilt 2026-08-09T20:45:17Z -->
