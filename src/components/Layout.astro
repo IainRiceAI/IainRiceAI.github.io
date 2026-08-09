@@ -1,6 +1,8 @@
 ---
 import '../styles/global.css';
-const { title = 'Professor Iain Rice | Industrial AI', description = 'Professor of Industrial AI, executive AI leader and research collaborator.' } = Astro.props;
+
+const { title = 'Professor Iain Rice | Industrial AI, Governance & Research Leadership', description = 'Professor of Industrial AI. Executive AI leadership, industry collaboration, applied research and governance for healthcare, defence, FinTech, public safety and education.', image = '/images/iain-picture.jpg' } = Astro.props;
+const site = 'https://iainriceai.github.io';
 ---
 <!doctype html>
 <html lang="en">
@@ -8,25 +10,101 @@ const { title = 'Professor Iain Rice | Industrial AI', description = 'Professor 
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
+    <meta name="author" content="Professor Iain Rice" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={`${site}${Astro.url.pathname}`} />
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
+    <meta name="theme-color" content="#071427" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="profile" />
+    <meta property="og:url" content={`${site}${Astro.url.pathname}`} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={`${site}${image}`} />
+    <meta property="profile:first_name" content="Iain" />
+    <meta property="profile:last_name" content="Rice" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={`${site}${image}`} />
+
+    <!-- Structured Data: Person -->
+    <script type="application/ld+json">
+      {JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Person",
+        name: "Iain Rice",
+        url: site,
+        image: `${site}/images/iain-picture.jpg`,
+        jobTitle: "Professor of Industrial AI",
+        worksFor: { "@type": "Organization", name: "Birmingham City University" },
+        sameAs: [
+          "https://www.linkedin.com/in/prof-iain-rice-phd-24a007188/"
+        ],
+        description: description
+      })}
+    </script>
+    <script type="application/ld+json">
+      {JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        name: title,
+        url: `${site}${Astro.url.pathname}`,
+        description: description,
+        author: { "@type": "Person", name: "Iain Rice" }
+      })}
+    </script>
+
+    <!-- Google Fonts: Inter with swap -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+
     <title>{title}</title>
   </head>
   <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
     <header class="site-header">
-      <nav class="container nav">
+      <nav class="container nav" aria-label="Main navigation">
         <a class="brand" href="/">Iain Rice<span>.</span></a>
         <div class="nav-links">
-          <a href="/industry/">Industry</a>
-          <a href="/research/">Research</a>
-          <a href="/leadership/">Leadership</a>
-          <a href="/contact/">Contact</a>
+          <a href="/industry/" aria-label="Industry collaboration">Industry</a>
+          <a href="/research/" aria-label="Research profile">Research</a>
+          <a href="/leadership/" aria-label="Leadership">Leadership</a>
+          <a href="/contact/" aria-label="Contact">Contact</a>
+          <a href="/images/Iain_Rice_CV_UK.pdf" target="_blank" rel="noopener" class="btn-cv" aria-label="Download CV (PDF)">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            CV
+          </a>
         </div>
       </nav>
     </header>
-    <main><slot /></main>
+    <main id="main-content"><slot /></main>
     <footer class="footer">
-      <div class="container">
-        <strong>Professor Iain Rice</strong><br />
-        Industrial AI · GenAI · AI Governance · Healthcare · FinTech · Public Safety · Education
+      <div class="container footer-grid">
+        <div>
+          <strong>Professor Iain Rice, PhD</strong><br />
+          <span class="muted">Industrial AI · AI Governance · Research Leadership</span>
+        </div>
+        <div class="footer-links">
+          <a href="/industry/">Industry Collaboration</a>
+          <a href="/research/">Research Profile</a>
+          <a href="/leadership/">Leadership</a>
+          <a href="/contact/">Contact</a>
+        </div>
+        <div>
+          <a href="/images/Iain_Rice_CV_UK.pdf" target="_blank" rel="noopener">Download CV (PDF)</a>
+        </div>
+      </div>
+      <div class="container" style="text-align:center; padding-top:18px; border-top:1px solid rgba(255,255,255,.08); margin-top:18px; font-size:.82rem;">
+        © 2024 Iain Rice · Built with Astro
       </div>
     </footer>
   </body>
