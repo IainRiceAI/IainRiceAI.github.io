@@ -1,6 +1,7 @@
 ---
 import Layout from '../components/Layout.astro';
 import PageHero from '../components/PageHero.astro';
+const base = import.meta.env.BASE_URL;
 ---
 <Layout title="Industry Collaboration | Professor Iain Rice">
   <PageHero eyebrow="Industry collaboration" title="AI consulting, governance and applied delivery for organisations." lede="I work with partners who need more than an AI demo: strategy, governance, data security, adoption, stakeholder confidence and measurable outcomes." />
@@ -83,7 +84,7 @@ import PageHero from '../components/PageHero.astro';
     <div class="cta-banner">
       <h2>Let's discuss your AI challenge</h2>
       <p>Whether you need strategy, delivery or both — I'd love to hear about what you're working on.</p>
-      <a class="btn" href={`/contact/`}>Get in touch</a>
+      <a class="btn" href={`${base}/contact/`}>Get in touch</a>
     </div>
   </div>
 </Layout>
