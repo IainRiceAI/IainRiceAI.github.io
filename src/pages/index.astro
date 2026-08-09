@@ -2,33 +2,37 @@
 import Layout from '../components/Layout.astro';
 ---
 <Layout title="Professor Iain Rice | Industrial AI, Governance & Research Leadership">
-  <section class="hero">
+
+  <!-- Full-width banner header -->
+  <div class="hero-banner">
+    <div class="container">
+      <span class="eyebrow">Professor of Industrial AI</span>
+      <h1>Practical AI leadership for organisations that need credible, human-centred implementation.</h1>
+      <p class="lede">I work with businesses, researchers and public-sector partners to turn AI ambition into responsible systems, evidence-led projects and real organisational capability.</p>
+      <div class="hero-actions">
+        <a class="btn" href="/industry/">Work with me</a>
+        <a class="btn secondary" href="/research/">Explore research</a>
+      </div>
+    </div>
+  </div>
+
+  <section class="hero" style="padding-top: 48px;">
     <div class="container hero-grid">
       <div>
-        <span class="eyebrow">Professor of Industrial AI</span>
-        <h1>Practical AI leadership for organisations that need credible, human-centred implementation.</h1>
-        <p class="lede">I work with businesses, researchers and public-sector partners to turn AI ambition into responsible systems, evidence-led projects and real organisational capability.</p>
-        <div class="hero-actions">
-          <a class="btn" href="/industry/">Work with me</a>
-          <a class="btn secondary" href="/research/">Explore research</a>
+        <div class="metrics">
+          <div class="metric"><strong>100+</strong><span>academic staff led</span></div>
+          <div class="metric"><strong>50+</strong><span>industrial consultancy projects</span></div>
+          <div class="metric"><strong>£3m+</strong><span>multi-stakeholder AI projects</span></div>
+          <div class="metric"><strong>2000+</strong><span>MSc AI applications in 3 years</span></div>
         </div>
       </div>
       <aside class="portrait-card">
-        <img src="/images/iain-picture.jpg" alt="Professor Iain Rice" loading="lazy" />
+        <img src="/images/iain-conference.jpg" alt="Professor Iain Rice at a professional conference" loading="lazy" />
         <div class="portrait-overlay">
           <h3>Professor Iain Rice, PhD</h3>
           <p>Industrial AI · AI Governance · Research Leadership</p>
         </div>
       </aside>
-    </div>
-
-    <div class="container">
-      <div class="metrics">
-        <div class="metric"><strong>100+</strong><span>academic staff led</span></div>
-        <div class="metric"><strong>50+</strong><span>industrial consultancy projects</span></div>
-        <div class="metric"><strong>£3m+</strong><span>multi-stakeholder AI projects</span></div>
-        <div class="metric"><strong>2000+</strong><span>MSc AI applications in 3 years</span></div>
-      </div>
     </div>
   </section>
 
