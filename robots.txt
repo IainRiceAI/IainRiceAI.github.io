@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://iainriceai.github.io/sitemap-index.xml
