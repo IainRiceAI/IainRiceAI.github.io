@@ -1,108 +1,154 @@
 ---
-import Layout from '../components/Layout.astro';
-const base = import.meta.env.BASE_URL;
+import Base from '../layouts/Base.astro';
+import NeuralCanvas from '../components/NeuralCanvas.astro';
+import Quote from '../components/Quote.astro';
+import CTA from '../components/CTA.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { featuredProjects } from '../data/projects.js';
 ---
-<Layout title="Professor Iain Rice | Industrial AI, Governance & Research Leadership">
-
-  <!-- Full-width banner header -->
-  <div class="hero-banner">
+<Base>
+  <!-- ── Hero: the living network ─────────────────────────────── -->
+  <section class="hero">
+    <NeuralCanvas />
+    <div class="hero-veil"></div>
     <div class="container">
-      <span class="eyebrow">Professor of Industrial AI</span>
-      <h1>Practical AI leadership for organisations that need credible, human-centred implementation.</h1>
-      <p class="lede">I work with businesses, researchers and public-sector partners to turn AI ambition into responsible systems, evidence-led projects and real organisational capability.</p>
-      <div class="hero-actions">
-        <a class="btn" href={`${base}/industry/`}>Work with me</a>
-        <a class="btn secondary" href={`${base}/research/`}>Explore research</a>
+      <div class="hero-grid">
+        <div>
+          <span class="eyebrow" style="color: var(--teal-bright);">Professor of Industrial AI</span>
+          <h1>AI that works <em>in the real world</em> — governed, delivered, trusted.</h1>
+          <p class="lede">
+            I help organisations turn AI ambition into responsible systems and measurable outcomes —
+            from strategy and governance to hands-on delivery across healthcare, defence, FinTech,
+            public safety and education.
+          </p>
+          <div class="hero-actions">
+            <a class="btn" href="/industry/">Work with me</a>
+            <a class="btn ghost" href="/research/">Explore research</a>
+          </div>
+          <div class="hero-signal">
+            <svg width="60" height="22" viewBox="0 0 60 22" fill="none" stroke="#2dd4bf" stroke-width="1.6" aria-hidden="true">
+              <path d="M0 11 H16 L20 3 L26 19 L30 8 L33 11 H60" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Signal detected — move your cursor through the network
+          </div>
+        </div>
+        <aside class="portrait">
+          <div class="portrait-badge"><span>£6.2m</span>funding attracted</div>
+          <div class="portrait-frame">
+            <img src="/images/iain-picture-web.jpg" alt="Professor Iain Rice" loading="eager" />
+            <div class="portrait-caption">
+              <strong>Professor Iain Rice, PhD</strong>
+              <span>Industrial AI · Governance · Research Leadership</span>
+            </div>
+          </div>
+        </aside>
       </div>
     </div>
-  </div>
+  </section>
 
-  <section class="hero" style="padding-top: 48px;">
-    <div class="container hero-grid">
-      <div>
-        <div class="metrics">
-          <div class="metric"><strong>100+</strong><span>academic staff led</span></div>
-          <div class="metric"><strong>50+</strong><span>industrial consultancy projects</span></div>
-          <div class="metric"><strong>£3m+</strong><span>multi-stakeholder AI projects</span></div>
-          <div class="metric"><strong>2000+</strong><span>MSc AI applications in 3 years</span></div>
+  <!-- ── Stats ────────────────────────────────────────────────── -->
+  <section class="section tight" style="padding-bottom: 0;">
+    <div class="container" style="padding: 0;">
+      <div class="stats" style="border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line);">
+        <div class="stat">
+          <div class="stat-value"><span data-count="100">0</span><span class="unit">+</span></div>
+          <div class="stat-label">academic staff led across teaching &amp; research</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value"><span data-count="60">0</span><span class="unit">+</span></div>
+          <div class="stat-label">external consultancy projects delivered</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value"><span class="unit" style="font-size:0.5em;">£</span><span data-count="6.2">0</span><span class="unit">m</span></div>
+          <div class="stat-label">research &amp; innovation funding attracted</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value"><span data-count="12">0</span><span class="unit">h</span></div>
+          <div class="stat-label">advance warning of cardiac arrest (RAPID project)</div>
         </div>
       </div>
-      <aside class="portrait-card">
-        <img src={`${base}/images/iain-conference.jpg`} alt="Professor Iain Rice at a professional conference" loading="lazy" />
-        <div class="portrait-overlay">
-          <h3>Professor Iain Rice, PhD</h3>
-          <p>Industrial AI · AI Governance · Research Leadership</p>
-        </div>
-      </aside>
     </div>
   </section>
 
+  <!-- ── Who I help ───────────────────────────────────────────── -->
   <section class="section">
     <div class="container">
-      <h2>Bridging AI research, organisational strategy and delivery.</h2>
-      <p class="lede">I bring academic depth and hands-on experience across GenAI, machine learning, cloud/software development, healthcare, defence, business transformation, FinTech and public safety. My focus is helping people integrate AI responsibly: not just selecting tools, but aligning data, governance, culture, skills and measurable outcomes.</p>
+      <div class="section-head reveal">
+        <span class="eyebrow">Who I work with</span>
+        <h2>Bridging AI research, organisational strategy and delivery.</h2>
+        <p class="lede">
+          Academic depth, hands-on delivery. My focus is helping people integrate AI responsibly:
+          not just selecting tools, but aligning data, governance, culture, skills and measurable outcomes.
+        </p>
+      </div>
+      <div class="grid-3">
+        <div class="card reveal">
+          <span class="card-index">01</span>
+          <h3>For businesses</h3>
+          <p>AI readiness, strategic direction, LLM integration, guardrails, governance, risk assessment and practical implementation pathways.</p>
+        </div>
+        <div class="card reveal">
+          <span class="card-index">02</span>
+          <h3>For researchers</h3>
+          <p>Applied AI collaborations in healthcare, predictive analytics, signal processing, cyber security, responsible AI and interdisciplinary funding bids.</p>
+        </div>
+        <div class="card reveal">
+          <span class="card-index">03</span>
+          <h3>For teams</h3>
+          <p>Support for leaders, technical teams and mixed stakeholder groups who need to understand what AI can realistically — and safely — do.</p>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section class="section">
-    <div class="container grid-3">
-      <div class="card">
-        <h3>For businesses</h3>
-        <p>AI readiness, strategic direction, LLM integration, guardrails, governance, risk assessment and practical implementation pathways.</p>
-      </div>
-      <div class="card">
-        <h3>For researchers</h3>
-        <p>Applied AI collaborations in healthcare, predictive analytics, signal processing, cyber security, responsible AI and interdisciplinary funding bids.</p>
-      </div>
-      <div class="card">
-        <h3>For teams</h3>
-        <p>Support for leaders, technical teams and mixed stakeholder groups who need to understand what AI can realistically and safely do.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container grid-2">
-      <div>
-        <span class="eyebrow">AI that can be integrated, governed and trusted</span>
-        <h2>Current focus</h2>
-        <p class="lede">My work is strongest where AI has to meet real-world constraints: clinical settings, regulatory expectations, data security, organisational change, public trust and commercially meaningful outcomes.</p>
-        <ul style="list-style:none; padding:0; margin-top: 24px; display:grid; gap: 12px;">
-          <li style="display:flex; align-items:flex-start; gap: 10px;">
-            <span style="color:var(--teal); font-weight:700;">●</span>
-            AI governance, ethics, GDPR and data security
-          </li>
-          <li style="display:flex; align-items:flex-start; gap: 10px;">
-            <span style="color:var(--teal); font-weight:700;">●</span>
-            GenAI, LLM testing and guardrail deployment
-          </li>
-          <li style="display:flex; align-items:flex-start; gap: 10px;">
-            <span style="color:var(--teal); font-weight:700;">●</span>
-            Healthcare AI, medical image analysis and outcome prediction
-          </li>
-          <li style="display:flex; align-items:flex-start; gap: 10px;">
-            <span style="color:var(--teal); font-weight:700;">●</span>
-            Predictive analytics, anomaly detection and dashboards
-          </li>
-          <li style="display:flex; align-items:flex-start; gap: 10px;">
-            <span style="color:var(--teal); font-weight:700;">●</span>
-            AI-enhanced consulting, FinTech and public safety applications
-          </li>
+  <!-- ── Current focus (split) ────────────────────────────────── -->
+  <section class="section alt">
+    <div class="container split">
+      <div class="reveal">
+        <span class="eyebrow">Current focus</span>
+        <h2>AI that can be integrated, governed and trusted.</h2>
+        <p class="lede">
+          My work is strongest where AI has to meet real-world constraints: clinical settings,
+          regulatory expectations, data security, organisational change, public trust and
+          commercially meaningful outcomes.
+        </p>
+        <ul class="focus-list">
+          <li>AI governance, ethics, GDPR and data security</li>
+          <li>GenAI, LLM testing and guardrail deployment</li>
+          <li>Healthcare AI, medical image analysis and outcome prediction</li>
+          <li>Predictive analytics, anomaly detection and dashboards</li>
+          <li>AI-enhanced consulting, FinTech and public safety applications</li>
         </ul>
       </div>
-      <div class="quote-card">
-        <blockquote>"From our first meeting with Iain, it was clear he understood how companies and consultancy worked, and how best to interact with us. His ability to grasp the value held in our data and how it is used allowed him to explain why the solution to our problems was not merely an AI application, as others had insinuated, but rather a problem of data visualisation. The quick turn-around and business-focussed approach was not what we had come to expect from an academic institution and should be templated in other areas."</blockquote>
-        <cite>— Stuart Ewen, CEO of Mindset Associates</cite>
+      <div class="split-media reveal">
+        <img src="/images/iain-conference.jpg" alt="Professor Iain Rice speaking at a professional event" loading="lazy" />
+        <div class="split-media-caption">
+          Translating complex AI capability into solutions stakeholders trust.
+        </div>
       </div>
     </div>
   </section>
 
-  <div class="container">
-    <div class="cta-banner">
-      <h2>Let's discuss your AI challenge</h2>
-      <p>Whether you need strategy, delivery or both — I'd love to hear about what you're working on.</p>
-      <a class="btn" href={`${base}/contact/`}>Get in touch</a>
-      <a class="btn secondary" href={`${base}/images/Iain_Rice_CV_UK.pdf`} style="color:var(--ink); border:1px solid rgba(255,255,255,.25); margin-left:12px;" target="_blank" rel="noopener">Download CV</a>
+  <!-- ── Selected work ────────────────────────────────────────── -->
+  <section class="section dark">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Selected work</span>
+        <h2>Where AI met the real world.</h2>
+        <p class="lede">A sample of industrial and research collaborations. Artefacts, dashboards and case materials are added here as they become shareable.</p>
+      </div>
+      <div class="grid-2">
+        {featuredProjects.map((p) => <ProjectCard project={p} />)}
+      </div>
+      <div class="center" style="margin-top: 40px;">
+        <a class="btn ghost" href="/industry/" style="color:#fff;">See the full portfolio</a>
+      </div>
     </div>
-  </div>
-</Layout>
+  </section>
+
+  <!-- ── Partner quote ────────────────────────────────────────── -->
+  <Quote full={true} />
+
+  <!-- ── CTA ──────────────────────────────────────────────────── -->
+  <CTA />
+</Base>

@@ -1,2 +1,0 @@
-# Generate with: convert -background transparent -size 16x16 xc:none -fill "#00a6a6" -pointsize 10 -gravity center -annotate 0 "IR" public/favicon.ico
-# For now, the SVG favicon works for modern browsers

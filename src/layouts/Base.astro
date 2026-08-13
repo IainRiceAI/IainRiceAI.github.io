@@ -1,0 +1,191 @@
+---
+import '../styles/global.css';
+
+const {
+  title = 'Professor Iain Rice | Industrial AI, Governance & Research Leadership',
+  description = 'Professor of Industrial AI at Birmingham City University. Executive AI leadership, industry collaboration, applied research and governance for healthcare, defence, FinTech, public safety and education.',
+  image = '/images/iain-picture-web.jpg',
+} = Astro.props;
+
+const site = 'https://iainriceai.github.io';
+const path = Astro.url.pathname;
+const year = new Date().getFullYear();
+
+const navItems = [
+  { href: '/industry/', label: 'Industry' },
+  { href: '/research/', label: 'Research' },
+  { href: '/leadership/', label: 'Leadership' },
+  { href: '/contact/', label: 'Contact' },
+];
+const isActive = (href) => path === href || (href !== '/' && path.startsWith(href));
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="author" content="Professor Iain Rice" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={`${site}${path}`} />
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
+    <meta name="theme-color" content="#0a1322" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="profile" />
+    <meta property="og:url" content={`${site}${path}`} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={`${site}${image}`} />
+    <meta property="profile:first_name" content="Iain" />
+    <meta property="profile:last_name" content="Rice" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={`${site}${image}`} />
+
+    <!-- Structured data -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Person",
+      name: "Professor Iain Rice",
+      url: site,
+      image: `${site}/images/iain-picture-web.jpg`,
+      jobTitle: "Professor of Industrial AI",
+      worksFor: { "@type": "Organization", name: "Birmingham City University" },
+      sameAs: ["https://www.linkedin.com/in/prof-iain-rice-phd-24a007188/"],
+      description: description,
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      name: title,
+      url: `${site}${path}`,
+      description: description,
+      author: { "@type": "Person", name: "Iain Rice" },
+    })} />
+
+    <!-- Fonts: Fraunces (display) + Space Grotesk (UI) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,480;0,9..144,560;0,9..144,600;1,9..144,480&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>{title}</title>
+  </head>
+  <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header class="site-header">
+      <nav class="container nav" aria-label="Main navigation">
+        <a class="brand" href="/">
+          <span class="brand-dot" aria-hidden="true"></span>
+          Iain Rice
+        </a>
+        <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links">Menu</button>
+        <div class="nav-links" id="nav-links">
+          {navItems.map((item) => (
+            <a href={item.href} aria-current={isActive(item.href) ? 'page' : undefined}>{item.label}</a>
+          ))}
+          <a href="/Iain_Rice_CV_UK.pdf" target="_blank" rel="noopener" class="nav-cta" aria-label="Download CV (PDF)">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            CV
+          </a>
+        </div>
+      </nav>
+    </header>
+
+    <main id="main-content">
+      <slot />
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div>
+            <strong>Professor Iain Rice, PhD</strong>
+            <p class="footer-note">
+              Industrial AI · AI Governance · Research Leadership<br />
+              Birmingham City University
+            </p>
+          </div>
+          <div>
+            <h4>Explore</h4>
+            <div class="footer-links">
+              <a href="/industry/">Industry Collaboration</a>
+              <a href="/research/">Research Profile</a>
+              <a href="/leadership/">Leadership</a>
+              <a href="/contact/">Contact</a>
+            </div>
+          </div>
+          <div>
+            <h4>Connect</h4>
+            <div class="footer-links">
+              <a href="mailto:iain.rice@bcu.ac.uk">iain.rice@bcu.ac.uk</a>
+              <a href="https://www.linkedin.com/in/prof-iain-rice-phd-24a007188/" target="_blank" rel="noopener">LinkedIn</a>
+              <a href="/Iain_Rice_CV_UK.pdf" target="_blank" rel="noopener">Download CV (PDF)</a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span>© {year} Iain Rice · Birmingham, UK</span>
+          <span>Signals propagate. Ideas land. <span class="heart" aria-hidden="true">●</span></span>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Mobile nav toggle
+      const toggle = document.querySelector('.nav-toggle');
+      const links = document.getElementById('nav-links');
+      toggle?.addEventListener('click', () => {
+        const open = links.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', String(open));
+      });
+
+      // Reveal on scroll
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (!reduceMotion && 'IntersectionObserver' in window) {
+        const io = new IntersectionObserver((entries) => {
+          for (const e of entries) {
+            if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+          }
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+        document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+      } else {
+        document.querySelectorAll('.reveal').forEach((el) => el.classList.add('in'));
+      }
+
+      // Count-up stats
+      const counters = document.querySelectorAll('[data-count]');
+      if (counters.length && !reduceMotion && 'IntersectionObserver' in window) {
+        const cio = new IntersectionObserver((entries) => {
+          for (const e of entries) {
+            if (!e.isIntersecting) continue;
+            cio.unobserve(e.target);
+            const el = e.target;
+            const target = parseFloat(el.dataset.count);
+            const decimals = el.dataset.count.includes('.') ? 1 : 0;
+            const dur = 1400;
+            const t0 = performance.now();
+            const tick = (t) => {
+              const p = Math.min(1, (t - t0) / dur);
+              const eased = 1 - Math.pow(1 - p, 3);
+              el.firstChild.textContent = (target * eased).toFixed(decimals);
+              if (p < 1) requestAnimationFrame(tick);
+            };
+            requestAnimationFrame(tick);
+          }
+        }, { threshold: 0.4 });
+        counters.forEach((el) => cio.observe(el));
+      }
+    </script>
+  </body>
+</html>

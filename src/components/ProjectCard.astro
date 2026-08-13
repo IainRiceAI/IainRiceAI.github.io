@@ -1,0 +1,40 @@
+---
+// Renders one project from src/data/projects.js.
+// If the project has an `image`, it is shown; otherwise a neural-motif
+// placeholder keeps the card visually complete until artefacts are added.
+const { project } = Astro.props;
+---
+<article class="project-card reveal">
+  <div class="project-media">
+    <span class="media-tag">{project.sector}</span>
+    {project.image ? (
+      <img src={project.image} alt={`${project.title} — project artefact`} loading="lazy" />
+    ) : (
+      <div class="media-motif" aria-hidden="true">
+        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.4">
+          <circle cx="12" cy="32" r="4" fill="currentColor" stroke="none" opacity="0.9"/>
+          <circle cx="32" cy="14" r="3" fill="currentColor" stroke="none" opacity="0.7"/>
+          <circle cx="32" cy="50" r="3" fill="currentColor" stroke="none" opacity="0.7"/>
+          <circle cx="52" cy="32" r="4" fill="#e8a33d" stroke="none" opacity="0.9"/>
+          <path d="M15 30 L29 16 M15 34 L29 48 M35 16 L49 30 M35 48 L49 34" opacity="0.55"/>
+        </svg>
+      </div>
+    )}
+  </div>
+  <div class="project-body">
+    <span class="project-org">{project.org}{project.year ? ` · ${project.year}` : ''}</span>
+    <h3>{project.title}</h3>
+    <p>{project.summary}</p>
+    {project.tags && (
+      <div class="tags">
+        {project.tags.map((t) => <span class="tag">{t}</span>)}
+      </div>
+    )}
+    {(project.artefact || project.links) && (
+      <div class="project-links">
+        {project.artefact && <a href={project.artefact.href} target="_blank" rel="noopener">{project.artefact.label} →</a>}
+        {project.links && project.links.map((l) => <a href={l.href} target="_blank" rel="noopener">{l.label} →</a>)}
+      </div>
+    )}
+  </div>
+</article>

@@ -1,34 +1,89 @@
 ---
-import Layout from '../components/Layout.astro';
+import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
-const base = import.meta.env.BASE_URL;
+import CTA from '../components/CTA.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { researchProjects } from '../data/projects.js';
 ---
-<Layout title="Research | Professor Iain Rice">
-  <PageHero eyebrow="Research profile" title="Applied AI research with clinical, industrial and social value." lede="My research background spans GenAI, machine learning, signal processing, cloud and software development across healthcare, defence, business and economic fields." />
+<Base title="Research | Professor Iain Rice">
+  <PageHero
+    eyebrow="Research profile"
+    title="Applied AI research with clinical, industrial and social value."
+    lede="GenAI, machine learning, signal processing and cloud/software development across healthcare, defence, business and economic fields."
+  />
 
+  <!-- Themes -->
   <section class="section">
-    <div class="container grid-2">
-      <div class="card"><h3>Healthcare AI</h3><p>Diabetes outcome prediction, medical image analysis for dementia characterisation, EEG analysis for intraoperative neurological monitoring and pre-eclampsia outcome prediction.</p></div>
-      <div class="card"><h3>Immersive and simulation AI</h3><p>AI-enhanced VR/AR for medical simulation and training environments where learning, safety and assessment intersect.</p></div>
-      <div class="card"><h3>Responsible GenAI</h3><p>LLM guardrails, cyber security implementation, GDPR-aware governance and organisational risk management.</p></div>
-      <div class="card"><h3>Inclusive AI talent</h3><p>Work supporting the transition of female, black, disabled and low-income learners into AI fields through the ELAN project.</p></div>
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Research themes</span>
+        <h2>Where my research concentrates.</h2>
+      </div>
+      <div class="grid-4">
+        <div class="card reveal">
+          <span class="card-index">01</span>
+          <h3>Healthcare AI</h3>
+          <p>Diabetes outcome prediction, medical image analysis for dementia characterisation, EEG analysis for intraoperative neurological monitoring and pre-eclampsia prediction.</p>
+        </div>
+        <div class="card reveal">
+          <span class="card-index">02</span>
+          <h3>Immersive &amp; simulation AI</h3>
+          <p>AI-enhanced VR/AR for medical simulation and training environments where learning, safety and assessment intersect.</p>
+        </div>
+        <div class="card reveal">
+          <span class="card-index">03</span>
+          <h3>Responsible GenAI</h3>
+          <p>LLM guardrails, cyber security implementation, GDPR-aware governance and organisational risk management.</p>
+        </div>
+        <div class="card reveal">
+          <span class="card-index">04</span>
+          <h3>Inclusive AI talent</h3>
+          <p>Supporting the transition of female, black, disabled and low-income learners into AI fields through the ELAN project.</p>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section class="section dark"><div class="container">
-    <h2>Notable research projects</h2>
-    <div class="timeline">
-      <div class="timeline-item"><strong>RAPID — Birmingham Children's Hospital</strong><br/>On-ward predictive analytics to identify at-risk children, providing 12 hours advanced warning of cardiac arrest.</div>
-      <div class="timeline-item"><strong>Thales UK — SONAR anomaly detection</strong><br/>PhD research building anomaly detection algorithms for defence intelligence applications.</div>
-      <div class="timeline-item"><strong>Our Safer Streets — Crime pattern analysis</strong><br/>Working with City of London Police to identify crime patterns and safe walking routes to reduce violence against women and girls (VAWG).</div>
+  <!-- Notable projects -->
+  <section class="section alt">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Track record</span>
+        <h2>Notable research programmes.</h2>
+      </div>
+      <div class="grid-3">
+        {researchProjects.map((p) => <ProjectCard project={p} />)}
+      </div>
     </div>
-  </div></section>
+  </section>
 
-  <div class="container">
-    <div class="cta-banner">
-      <h2>Interested in research collaboration?</h2>
-      <p>I'm always open to applied AI collaborations with clinical, industrial and social value.</p>
-      <a class="btn" href={`${base}/contact/`}>Get in touch</a>
+  <!-- Recognition strip -->
+  <section class="section dark">
+    <div class="container split">
+      <div class="reveal">
+        <span class="eyebrow">Recognition</span>
+        <h2>Research with public reach.</h2>
+        <p class="lede" style="color: var(--muted-dark);">
+          My postdoctoral work on the RAPID project was featured on CBBC's Operation Ouch,
+          and the underlying Smart Alarm System became the subject of a patent application.
+          PhD research was communicated directly to high-ranking military personnel at
+          international conferences.
+        </p>
+        <div class="tags" style="margin-top: 24px;">
+          <span class="tag">CBBC Operation Ouch</span>
+          <span class="tag">Smart Alarm patent</span>
+          <span class="tag">International conferences</span>
+        </div>
+      </div>
+      <div class="split-media reveal">
+        <img src="/images/iain-award.jpg" alt="Professor Iain Rice receiving recognition for his work" loading="lazy" />
+        <div class="split-media-caption">Applied AI with clinical, industrial and social value.</div>
+      </div>
     </div>
-  </div>
-</Layout>
+  </section>
+
+  <CTA
+    title="Interested in research collaboration?"
+    text="I'm always open to applied AI collaborations with clinical, industrial and social value."
+  />
+</Base>

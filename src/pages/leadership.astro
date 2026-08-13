@@ -1,39 +1,108 @@
 ---
-import Layout from '../components/Layout.astro';
+import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
-const base = import.meta.env.BASE_URL;
+import Quote from '../components/Quote.astro';
+import CTA from '../components/CTA.astro';
 ---
-<Layout title="Leadership | Professor Iain Rice">
-  <PageHero eyebrow="Leadership" title="Academic, organisational and AI transformation leadership." lede="A track record of leading people, programmes and AI systems in complex, regulated and diverse environments." />
+<Base title="Leadership | Professor Iain Rice">
+  <PageHero
+    eyebrow="Leadership"
+    title="Academic, organisational and AI transformation leadership."
+    lede="A track record of leading people, programmes and AI systems in complex, regulated and diverse environments."
+  />
 
-  <section class="section">
-    <div class="container grid-2">
-      <div class="card"><h3>Birmingham City University</h3><p>Professor of Industrial AI, Professor of AI and Head of Teaching & Learning. Leading teaching and learning activity, supervising applied AI research, directing consultancy projects and leading a team of over 100 academic staff.</p></div>
-      <div class="card"><h3>Strategic AI leadership</h3><p>Managed projects from £55k to over £3m with multiple stakeholders and regulatory reporting mechanisms. Designed and managed a conversion MSc Artificial Intelligence course attracting over 2000 applications in three years.</p></div>
-      <div class="card"><h3>External advisory roles</h3><p>Chief Data Scientist with Our Safer City, working alongside City of London Police on predictive analytics and dashboards to help prevent violence against women and girls.</p></div>
-      <div class="card"><h3>FinTech and education innovation</h3><p>AI Advisor to Figg Wealth on AI strategy, LLM integration and predictive analytics. Head of Content with Bot Theory, developing bite-size education activities in web-3.0 enabled game environments.</p></div>
-    </div>
-  </section>
-
-  <section class="section dark"><div class="container">
-    <h2>Previous leadership</h2>
-    <p>At Arden University, led Computing & IT with a £4m budget line and 40 staff internationally, growing Data MSc offerings to net £1m annually within two years and developing apprenticeship offerings across technology and management disciplines.</p>
-  </div></section>
-
+  <!-- Current roles -->
   <section class="section">
     <div class="container">
-      <div class="quote-card">
-        <blockquote>"From our first meeting with Iain, it was clear he understood how companies and consultancy worked, and how best to interact with us. His ability to grasp the value held in our data and how it is used allowed him to explain why the solution to our problems was not merely an AI application, as others had insinuated, but rather a problem of data visualisation. The quick turn-around and business-focussed approach was not what we had come to expect from an academic institution and should be templated in other areas."</blockquote>
-        <cite>— Stuart Ewen, CEO of Mindset Associates</cite>
+      <div class="section-head reveal">
+        <span class="eyebrow">Current</span>
+        <h2>Where I lead today.</h2>
+      </div>
+      <div class="grid-2">
+        <div class="card reveal">
+          <span class="card-index">Birmingham City University</span>
+          <h3>Professor of Industrial AI · Head of Teaching &amp; Learning</h3>
+          <p>Leading teaching and learning activity, supervising applied AI research, directing consultancy projects and leading a diverse team of over 100 academic staff and 3,000 students.</p>
+        </div>
+        <div class="card reveal">
+          <span class="card-index">Strategic AI leadership</span>
+          <h3>£55k to £3m+ programme delivery</h3>
+          <p>Managing multi-stakeholder projects with regulatory reporting. Designed and led a conversion MSc in Artificial Intelligence attracting over 2,000 applications in three years.</p>
+        </div>
+        <div class="card reveal">
+          <span class="card-index">Our Safer City</span>
+          <h3>Chief Data Scientist</h3>
+          <p>Working alongside City of London Police on predictive analytics and dashboards to help prevent violence against women and girls.</p>
+        </div>
+        <div class="card reveal">
+          <span class="card-index">FinTech &amp; education innovation</span>
+          <h3>AI Advisor · Head of Content</h3>
+          <p>AI Advisor to Figg Wealth on strategy, LLM integration and predictive analytics. Head of Content with Bot Theory, building bite-size education in web-3.0 game environments.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <div class="container">
-    <div class="cta-banner">
-      <h2>Interested in a conversation?</h2>
-      <p>I'd love to discuss how I can support your organisation's AI journey.</p>
-      <a class="btn" href={`${base}/contact/`}>Get in touch</a>
+  <!-- Journey -->
+  <section class="section alt">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Journey</span>
+        <h2>Two decades across academia and industry.</h2>
+      </div>
+      <div class="timeline reveal" style="max-width: 780px;">
+        <div class="timeline-item">
+          <span class="timeline-meta">2019 — Present</span>
+          <strong>Birmingham City University — Professor of Industrial AI</strong>
+          <p>Academic Lead for Teaching &amp; Learning. Attracted £6.2m in funding, directed 60+ external consultancy projects, and implemented learner analytics improving pass rates by 13% year-on-year.</p>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-meta">2017 — 2019</span>
+          <strong>Arden University — Head of School, Computing &amp; IT</strong>
+          <p>Led a £4m budget line and 40 staff internationally. Grew Data MSc offerings to net £1m annually within two years and launched apprenticeship programmes across 20+ organisations.</p>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-meta">2015 — 2017</span>
+          <strong>Aston University — Postdoctoral Research Associate</strong>
+          <p>Primary data scientist on the RAPID project at Birmingham Children's Hospital — AI systems predicting cardiac arrest with 12 hours advance warning, implemented live on the ward.</p>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-meta">2012 — 2015</span>
+          <strong>Aston University — PhD, Applied Mathematics</strong>
+          <p>Topographic information visualisation with Thales UK in the SONAR domain — AI-enabled smart alarms and visual informatics for undersea target identification.</p>
+        </div>
+      </div>
     </div>
-  </div>
-</Layout>
+  </section>
+
+  <!-- Impact numbers -->
+  <section class="section dark">
+    <div class="container">
+      <div class="stats" style="background: var(--line-dark); border-color: var(--line-dark); border-radius: var(--radius); overflow: hidden;">
+        <div class="stat" style="background: var(--ink-2);">
+          <div class="stat-value" style="color:#fff;"><span data-count="13">0</span><span class="unit">%</span></div>
+          <div class="stat-label" style="color: var(--muted-dark);">YoY improvement in student pass rates via learner analytics</div>
+        </div>
+        <div class="stat" style="background: var(--ink-2);">
+          <div class="stat-value" style="color:#fff;"><span data-count="2000">0</span><span class="unit">+</span></div>
+          <div class="stat-label" style="color: var(--muted-dark);">MSc AI applications in three years</div>
+        </div>
+        <div class="stat" style="background: var(--ink-2);">
+          <div class="stat-value" style="color:#fff;"><span data-count="3000">0</span><span class="unit">+</span></div>
+          <div class="stat-label" style="color: var(--muted-dark);">students across led programmes</div>
+        </div>
+        <div class="stat" style="background: var(--ink-2);">
+          <div class="stat-value" style="color:#fff;"><span data-count="50">0</span><span class="unit">+</span></div>
+          <div class="stat-label" style="color: var(--muted-dark);">apprentices from 20+ organisations</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Quote full={false} />
+
+  <CTA
+    title="Interested in a conversation?"
+    text="I'd love to discuss how I can support your organisation's AI journey."
+  />
+</Base>

@@ -1,0 +1,21 @@
+---
+const { full = true } = Astro.props;
+---
+<section class="section">
+  <div class="container">
+    <figure class="quote-wrap reveal">
+      <span class="quote-mark" aria-hidden="true">"</span>
+      <blockquote>
+        {full ? (
+          <>From our first meeting with Iain, it was clear he understood how companies and consultancy worked, and how best to interact with us. His ability to grasp the value held in our data and how it is used allowed him to explain why the solution to our problems was not merely an AI application, as others had insinuated, but rather a problem of data visualisation. The quick turn-around and business-focussed approach was not what we had come to expect from an academic institution and should be templated in other areas.</>
+        ) : (
+          <>From our first meeting with Iain, it was clear he understood how companies and consultancy worked, and how best to interact with us. The quick turn-around and business-focussed approach was not what we had come to expect from an academic institution.</>
+        )}
+      </blockquote>
+      <cite>
+        <strong>Stuart Ewen</strong>
+        CEO, Mindset Associates
+      </cite>
+    </figure>
+  </div>
+</section>

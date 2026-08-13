@@ -1,0 +1,231 @@
+---
+// "The Living Network" — a neural-graph field with heartbeat signal pulses.
+// - Nodes drift slowly; edges form between neighbours
+// - A lub-dub (heartbeat) pulse propagates across the graph, flashing nodes amber
+// - The cursor links to nearby nodes and gently gathers them
+// - Honours prefers-reduced-motion (renders one static frame)
+---
+
+<canvas id="neural-canvas" aria-hidden="true"></canvas>
+
+<script>
+  (() => {
+    const canvas = document.getElementById('neural-canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const TEAL = { r: 45, g: 212, b: 191 };
+    const AMBER = { r: 232, g: 163, b: 61 };
+    const LINK_DIST = 150;
+    const MOUSE_DIST = 190;
+
+    let w = 0, h = 0, dpr = 1;
+    let nodes = [];
+    let pulses = [];
+    let running = true;
+    let raf = null;
+    let last = 0;
+    let beatTimer = 1200; // ms until first heartbeat
+    const mouse = { x: -9999, y: -9999, active: false };
+
+    function resize() {
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      const rect = canvas.parentElement.getBoundingClientRect();
+      w = rect.width;
+      h = rect.height;
+      canvas.width = Math.round(w * dpr);
+      canvas.height = Math.round(h * dpr);
+      canvas.style.width = w + 'px';
+      canvas.style.height = h + 'px';
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      seed();
+    }
+
+    function seed() {
+      const target = Math.min(110, Math.max(38, Math.round((w * h) / 16000)));
+      nodes = Array.from({ length: target }, () => ({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        vx: (Math.random() - 0.5) * 0.16,
+        vy: (Math.random() - 0.5) * 0.16,
+        r: 1.4 + Math.random() * 2.2,
+        flash: 0,        // amber flash intensity 0..1 (set by pulses)
+        mouseGlow: 0,    // teal glow from cursor proximity
+        ox: 0, oy: 0,    // mouse-gather offset
+      }));
+      if (reduced) drawFrame(0);
+    }
+
+    function spawnPulse() {
+      // Heartbeat: a lub-dub pair — two pulses in quick succession
+      const sx = w * (0.15 + Math.random() * 0.7);
+      const sy = h * (0.2 + Math.random() * 0.6);
+      pulses.push({ x: sx, y: sy, r: 0, speed: 3.4, width: 90, alpha: 0.9 });
+      setTimeout(() => {
+        pulses.push({ x: sx, y: sy, r: 0, speed: 2.6, width: 60, alpha: 0.55 });
+      }, 260);
+    }
+
+    function step(dt) {
+      // Heartbeat scheduler (~72bpm feel: beat every ~1400ms)
+      beatTimer -= dt;
+      if (beatTimer <= 0) {
+        spawnPulse();
+        beatTimer = 1200 + Math.random() * 500;
+      }
+
+      // Expand pulses, flash nodes as the wavefront passes
+      for (let i = pulses.length - 1; i >= 0; i--) {
+        const p = pulses[i];
+        p.r += p.speed * (dt / 16.7);
+        p.alpha *= 0.996;
+        if (p.r > Math.hypot(w, h) || p.alpha < 0.03) { pulses.splice(i, 1); continue; }
+        for (const n of nodes) {
+          const d = Math.abs(Math.hypot(n.x - p.x, n.y - p.y) - p.r);
+          if (d < p.width * 0.5) {
+            const intensity = 1 - d / (p.width * 0.5);
+            n.flash = Math.min(1, Math.max(n.flash, intensity * p.alpha));
+          }
+        }
+      }
+
+      // Node physics
+      for (const n of nodes) {
+        n.x += n.vx * (dt / 16.7) + n.ox * 0.06;
+        n.y += n.vy * (dt / 16.7) + n.oy * 0.06;
+        n.ox *= 0.9; n.oy *= 0.9;
+
+        // soft wrap at edges
+        if (n.x < -20) n.x = w + 20; else if (n.x > w + 20) n.x = -20;
+        if (n.y < -20) n.y = h + 20; else if (n.y > h + 20) n.y = -20;
+
+        // cursor gather
+        const dx = mouse.x - n.x, dy = mouse.y - n.y;
+        const md = Math.hypot(dx, dy);
+        if (mouse.active && md < MOUSE_DIST) {
+          const f = 1 - md / MOUSE_DIST;
+          n.mouseGlow = Math.min(1, n.mouseGlow + f * 0.12);
+          n.ox += (dx / (md || 1)) * f * 1.1; // gentle attraction
+          n.oy += (dy / (md || 1)) * f * 1.1;
+        } else {
+          n.mouseGlow *= 0.94;
+        }
+        n.flash *= 0.955; // flash decay
+      }
+    }
+
+    function drawFrame(dt) {
+      ctx.clearRect(0, 0, w, h);
+
+      // Edges
+      for (let i = 0; i < nodes.length; i++) {
+        const a = nodes[i];
+        for (let j = i + 1; j < nodes.length; j++) {
+          const b = nodes[j];
+          const dx = a.x - b.x, dy = a.y - b.y;
+          const d2 = dx * dx + dy * dy;
+          if (d2 > LINK_DIST * LINK_DIST) continue;
+          const d = Math.sqrt(d2);
+          const base = (1 - d / LINK_DIST) * 0.16;
+          const heat = Math.min(1, a.flash + b.flash);
+          const glow = Math.min(1, a.mouseGlow + b.mouseGlow);
+          const alpha = Math.min(0.85, base + heat * 0.5 + glow * 0.35);
+          if (alpha < 0.02) continue;
+          if (heat > 0.12) {
+            ctx.strokeStyle = `rgba(${AMBER.r},${AMBER.g},${AMBER.b},${alpha})`;
+          } else {
+            ctx.strokeStyle = `rgba(${TEAL.r},${TEAL.g},${TEAL.b},${alpha})`;
+          }
+          ctx.lineWidth = heat > 0.12 ? 1.3 : 0.8;
+          ctx.beginPath();
+          ctx.moveTo(a.x, a.y);
+          ctx.lineTo(b.x, b.y);
+          ctx.stroke();
+        }
+      }
+
+      // Cursor links
+      if (mouse.active) {
+        for (const n of nodes) {
+          const d = Math.hypot(mouse.x - n.x, mouse.y - n.y);
+          if (d < MOUSE_DIST) {
+            const alpha = (1 - d / MOUSE_DIST) * 0.5;
+            ctx.strokeStyle = `rgba(${TEAL.r},${TEAL.g},${TEAL.b},${alpha})`;
+            ctx.lineWidth = 0.9;
+            ctx.beginPath();
+            ctx.moveTo(mouse.x, mouse.y);
+            ctx.lineTo(n.x, n.y);
+            ctx.stroke();
+          }
+        }
+      }
+
+      // Pulse wavefronts (visible rings)
+      for (const p of pulses) {
+        ctx.strokeStyle = `rgba(${AMBER.r},${AMBER.g},${AMBER.b},${p.alpha * 0.28})`;
+        ctx.lineWidth = 1.6;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.stroke();
+      }
+
+      // Nodes
+      for (const n of nodes) {
+        const heat = n.flash;
+        const glow = n.mouseGlow;
+        const radius = n.r + heat * 1.8 + glow * 1.4;
+        if (heat > 0.08) {
+          ctx.fillStyle = `rgba(${AMBER.r},${AMBER.g},${AMBER.b},${0.25 + heat * 0.65})`;
+        } else {
+          ctx.fillStyle = `rgba(${TEAL.r},${TEAL.g},${TEAL.b},${0.3 + glow * 0.6})`;
+        }
+        ctx.beginPath();
+        ctx.arc(n.x, n.y, radius, 0, Math.PI * 2);
+        ctx.fill();
+
+        // halo on hot nodes
+        if (heat > 0.25) {
+          ctx.fillStyle = `rgba(${AMBER.r},${AMBER.g},${AMBER.b},${heat * 0.12})`;
+          ctx.beginPath();
+          ctx.arc(n.x, n.y, radius * 3.2, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+    }
+
+    function loop(t) {
+      if (!running) return;
+      const dt = Math.min(50, t - last || 16.7);
+      last = t;
+      step(dt);
+      drawFrame(dt);
+      raf = requestAnimationFrame(loop);
+    }
+
+    // Events
+    const hero = canvas.parentElement;
+    hero.addEventListener('pointermove', (e) => {
+      const rect = canvas.getBoundingClientRect();
+      mouse.x = e.clientX - rect.left;
+      mouse.y = e.clientY - rect.top;
+      mouse.active = true;
+    });
+    hero.addEventListener('pointerleave', () => { mouse.active = false; mouse.x = -9999; mouse.y = -9999; });
+
+    document.addEventListener('visibilitychange', () => {
+      if (reduced) return;
+      if (document.hidden) { running = false; if (raf) cancelAnimationFrame(raf); }
+      else { running = true; last = performance.now(); raf = requestAnimationFrame(loop); }
+    });
+
+    let resizeTO;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTO);
+      resizeTO = setTimeout(resize, 150);
+    });
+
+    resize();
+    if (!reduced) raf = requestAnimationFrame(loop);
+  })();
+</script>

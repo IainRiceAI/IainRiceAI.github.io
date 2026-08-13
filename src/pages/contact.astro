@@ -1,29 +1,47 @@
 ---
-import Layout from '../components/Layout.astro';
+import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
-const base = import.meta.env.BASE_URL;
 ---
-<Layout title="Contact | Professor Iain Rice">
-  <PageHero eyebrow="Contact" title="Start a conversation about AI leadership, research or collaboration." lede="For industry collaboration, research partnerships, PhD/MSc supervision enquiries or executive AI leadership opportunities." />
+<Base title="Contact | Professor Iain Rice">
+  <PageHero
+    eyebrow="Contact"
+    title="Start a conversation."
+    lede="For industry collaboration, research partnerships, PhD/MSc supervision enquiries or executive AI leadership opportunities."
+  />
 
-  <section class="section"><div class="container grid-2">
-    <div class="card"><h3>Email</h3><p><a href="mailto:iain.rice@bcu.ac.uk"><strong>iain.rice@bcu.ac.uk</strong></a></p></div>
-    <div class="card"><h3>LinkedIn</h3><p><a href="https://www.linkedin.com/in/prof-iain-rice-phd-24a007188/" target="_blank" rel="noopener"><strong>Connect on LinkedIn</strong></a></p></div>
-  </div></section>
+  <section class="section">
+    <div class="container">
+      <div class="grid-2" style="max-width: 900px;">
+        <div class="contact-card reveal">
+          <span class="contact-label">Email</span>
+          <a class="contact-value" href="mailto:iain.rice@bcu.ac.uk">iain.rice@bcu.ac.uk</a>
+          <p>The best way to reach me — I respond to all enquiries.</p>
+        </div>
+        <div class="contact-card reveal">
+          <span class="contact-label">LinkedIn</span>
+          <a class="contact-value" href="https://www.linkedin.com/in/prof-iain-rice-phd-24a007188/" target="_blank" rel="noopener">Connect on LinkedIn</a>
+          <p>For professional updates, talks and collaboration posts.</p>
+        </div>
+        <div class="contact-card reveal">
+          <span class="contact-label">Based in</span>
+          <span class="contact-value">Birmingham, UK</span>
+          <p>Birmingham City University — available for engagements UK-wide and remotely.</p>
+        </div>
+        <div class="contact-card reveal">
+          <span class="contact-label">Curriculum vitae</span>
+          <a class="contact-value" href="/Iain_Rice_CV_UK.pdf" target="_blank" rel="noopener">Download CV (PDF)</a>
+          <p>Full employment history, technical proficiencies and project record.</p>
+        </div>
+      </div>
 
-  <section class="section"><div class="container">
-    <div class="quote-card">
-      <blockquote>"From our first meeting with Iain, it was clear he understood how companies and consultancy worked, and how best to interact with us."</blockquote>
-      <cite>— Stuart Ewen, CEO of Mindset Associates</cite>
+      <div class="cta-band reveal" style="margin-top: 60px;">
+        <h2>Let's discuss how AI can create value for your organisation</h2>
+        <p>Whether it's strategy, governance, delivery or research — the first conversation costs nothing.</p>
+        <div class="hero-actions">
+          <a class="btn" href="mailto:iain.rice@bcu.ac.uk">Send an email</a>
+          <a class="btn ghost" href="/Iain_Rice_CV_UK.pdf" target="_blank" rel="noopener" style="color:#fff;">Download CV</a>
+        </div>
+      </div>
     </div>
-  </div></section>
-
-  <div class="container">
-    <div class="cta-banner">
-      <h2>Let's discuss how AI can create value for your organisation</h2>
-      <p>Email is the best way to reach me — I respond to all enquiries.</p>
-      <a class="btn" href="mailto:iain.rice@bcu.ac.uk">Send an email</a>
-      <a class="btn secondary" href={`${base}/images/Iain_Rice_CV_UK.pdf`}>Download CV</a>
-    </div>
-  </div>
-</Layout>
+  </section>
+</Base>
