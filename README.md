@@ -25,3 +25,4 @@ npm run build
 Update `astro.config.mjs` with your real GitHub Pages URL.
 <!-- rebuilt 2026-08-09T20:45:17Z -->
 
+# Website restart
