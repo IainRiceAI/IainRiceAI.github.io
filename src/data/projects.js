@@ -36,7 +36,33 @@ export const projects = [
     summary:
       'On-ward predictive analytics identifying at-risk children — providing up to 12 hours advance warning of cardiac arrest, with whole-ward visual analytics mapping patient deterioration.',
     tags: ['Predictive analytics', 'Clinical AI', 'Visual analytics'],
-    // image: '/images/artefacts/rapid-ward-dashboard.jpg',
+    image: '/images/website_images_research/Rapid.jpg',
+    // artefact: { label: 'Watch Operation Ouch feature', href: 'https://…' },
+  },
+  {
+    title: 'Adversarial Machine Learning',
+    org: "Birmingham City University",
+    sector: 'Machine Learning',
+    kind: 'research',
+    featured: true,
+    year: '2023–26',
+    summary:
+      'PhD Project with Ziad Ali & Atif Azad demonstrating adversarial attacks against state-of-the-art AI algorithms. Published in CVPR.',
+    tags: ['Machine Learning', 'Adversarial Attacks', 'Computer Vision'],
+    image: '/images/website_images_research/adversarial.jpg',
+    // artefact: { label: 'Watch Operation Ouch feature', href: 'https://…' },
+  },
+    {
+    title: 'Dementia-Oriented Adaptive UX Design',
+    org: "Birmingham City University",
+    sector: 'UX Design',
+    kind: 'research',
+    featured: true,
+    year: '2023–26',
+    summary:
+      'PhD Project with Kirsty Link & Sayan Sarcar identifying limitations in dementia-oriented UX design.',
+    tags: ['UX', 'Web Design', 'Dementia'],
+    image: '/images/website_images_research/dementia.jpg',
     // artefact: { label: 'Watch Operation Ouch feature', href: 'https://…' },
   },
   {
@@ -49,6 +75,7 @@ export const projects = [
     summary:
       'PhD research building novel deep-learning architectures and AI-enabled smart alarms for undersea target identification, briefed to high-ranking military personnel.',
     tags: ['Deep learning', 'Anomaly detection', 'Defence intelligence'],
+    image: '/images/website_images_research/sonar.jpg',
   },
   {
     title: 'Safer Streets — Crime Pattern Analytics',
@@ -148,6 +175,7 @@ export const projects = [
     summary:
       'Diabetes outcome prediction, medical image analysis for dementia characterisation, EEG analysis for intraoperative neurological monitoring and pre-eclampsia outcome prediction.',
     tags: ['Medical imaging', 'Outcome prediction', 'EEG analysis'],
+    image: '/images/website_images_research/healthcare.jpg',
   },
   {
     title: 'ELAN — Inclusive AI Talent',
@@ -159,6 +187,7 @@ export const projects = [
     summary:
       'Supporting the transition of female, black, disabled and low-income learners into AI fields.',
     tags: ['Widening participation', 'AI education', 'EDI'],
+    image: '/images/website_images_research/learners.jpg',
   },
 ];
 
