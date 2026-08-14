@@ -57,7 +57,7 @@ export const projects = [
     org: "Birmingham City University",
     sector: 'UX Design',
     kind: 'research',
-    featured: true,
+    featured: false,
     year: '2023–26',
     summary:
       'PhD Project with Kirsty Link & Sayan Sarcar identifying limitations in dementia-oriented UX design.',
@@ -70,8 +70,8 @@ export const projects = [
     org: 'Thales UK',
     sector: 'Defence',
     kind: 'research',
-    featured: true,
-    year: 'PhD',
+    featured: false,
+    year: '2012-15',
     summary:
       'PhD research building novel deep-learning architectures and AI-enabled smart alarms for undersea target identification, briefed to high-ranking military personnel.',
     tags: ['Deep learning', 'Anomaly detection', 'Defence intelligence'],
@@ -83,10 +83,11 @@ export const projects = [
     sector: 'Public safety',
     kind: 'industry',
     featured: true,
-    year: 'Current',
+    year: '2024-26',
     summary:
       'Chief Data Scientist role: predictive analytics and dashboards identifying crime patterns and safe walking routes, helping reduce violence against women and girls (VAWG).',
     tags: ['Predictive policing', 'Dashboards', 'Public safety'],
+    image: '/images/website_images_industry/safer_city.jpg',
   },
   {
     title: 'GenAI Customer Support Platform',
@@ -94,10 +95,11 @@ export const projects = [
     sector: 'Cybersecurity / Cloud',
     kind: 'industry',
     featured: true,
-    year: '2023–24',
+    year: '2023–26',
     summary:
       'Leading a GenAI customer-support solution delivering measurable operational efficiencies for a cloud services provider — from guardrail design to deployment.',
     tags: ['GenAI', 'LLM guardrails', 'Customer operations'],
+    image: '/images/website_images_industry/metcloud.jpg',
   },
   {
     title: 'Data Visualisation Consultancy',
@@ -105,10 +107,11 @@ export const projects = [
     sector: 'Consultancy',
     kind: 'industry',
     featured: false,
-    year: '2022',
+    year: '2022-26',
     summary:
-      'Reframed an "AI problem" as a data-visualisation problem — translating complex data into actionable business intelligence with a fast, business-focused turnaround.',
-    tags: ['Data storytelling', 'Dashboards', 'Business intelligence'],
+      'AI-assisted Change Management solution for addressing Mindset alignment in complex business environments.',
+    tags: ['Data storytelling', 'Dashboards', 'Change Management'],
+    image: '/images/website_images_industry/evolutain.jpg',
   },
   {
     title: 'AI Strategy & Predictive Analytics',
@@ -116,21 +119,23 @@ export const projects = [
     sector: 'FinTech',
     kind: 'industry',
     featured: false,
-    year: 'Current',
+    year: '2023-26',
     summary:
       'Startup AI advisor developing strategies for maximising data value, LLM integration and predictive analytics in wealth management.',
     tags: ['AI strategy', 'FinTech', 'LLM integration'],
+    image: '/images/website_images_industry/figg.jpg',
   },
   {
     title: 'Dashboards & GenAI Decision Tools',
     org: 'Oxford Partnership',
-    sector: 'Education',
+    sector: 'Leisure',
     kind: 'industry',
     featured: false,
-    year: '2023',
+    year: '2023-26',
     summary:
       'Delivering dashboards, database analysis and GenAI tools to improve institutional decision-making.',
     tags: ['Dashboards', 'GenAI', 'Decision support'],
+    image: '/images/website_images_industry/op.jpg',
   },
   {
     title: 'Agentic Knowledge Base',
@@ -138,10 +143,11 @@ export const projects = [
     sector: 'Technology',
     kind: 'industry',
     featured: false,
-    year: '2024',
+    year: '2026',
     summary:
-      'Managing data curation and creating a structured knowledge base using agentic AI tools.',
+      'KTP Project leveraging GenAI with Guardrails for regulated knowledge distillation and agentic support.',
     tags: ['Agentic AI', 'Knowledge management', 'Data curation'],
+    image: '/images/website_images_industry/limegreen.jpg',
   },
   {
     title: 'Multi-Agent Process Automation',
@@ -149,10 +155,11 @@ export const projects = [
     sector: 'Technology',
     kind: 'industry',
     featured: false,
-    year: '2024',
+    year: '2026',
     summary:
-      'Developing multi-agent solutions for process automation and modernising legacy software systems.',
+      'Five student-led consultancy projects delivering multi-agent operational solutions including data management, knowledge search and process automation.',
     tags: ['Multi-agent systems', 'Automation', 'Legacy modernisation'],
+    image: '/images/website_images_industry/beeswift.jpg',
   },
   {
     title: 'Booking Platform & AI Strategy',
@@ -160,10 +167,23 @@ export const projects = [
     sector: 'Travel',
     kind: 'industry',
     featured: false,
-    year: '2022',
+    year: '2026',
     summary:
       'Tech advisor and interim CTO — developed AI strategy and delivered a booking platform for a rural technology business.',
     tags: ['Interim CTO', 'Platform delivery', 'AI strategy'],
+    image: '/images/website_images_industry/ri.jpg',
+  },
+  {
+    title: 'Automated Menu Generation Tool',
+    org: '360 Food Partners',
+    sector: 'Leisure',
+    kind: 'industry',
+    featured: false,
+    year: '2026',
+    summary:
+      'Student-led project generating restaurant menu designs from technical briefs and competitor analysis with GenAI.',
+    tags: ['Consultancy', 'Vision Language Models', 'Automated Design'],
+    image: '/images/website_images_industry/360fp.jpg',
   },
   {
     title: 'Healthcare Outcome Prediction',
