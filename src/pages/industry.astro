@@ -40,11 +40,46 @@ import { industryProjects } from '../data/projects.js';
           <h3>Governance &amp; ethics</h3>
           <p>GDPR-aware governance frameworks, responsible AI principles and data protection for regulated sectors.</p>
         </div>
+        <div class="card reveal">
+          <span class="card-index">04</span>
+          <h3>Training</h3>
+          <p>Staff development planning, structured training sessions with hands-on development activities</p>
+        </div>
+        <div class="card reveal">
+          <span class="card-index">04</span>
+          <h3>Media & Speaking</h3>
+          <p>Availabile for speaking engagements and media interaction; interview, special comment or live recording</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Approach -->
+  <!-- Portfolio -->
+  <section class="section dark">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Partnership portfolio</span>
+        <h2>Selected collaborations and clients.</h2>
+        <p class="lede">
+          Organisations across healthcare, public safety, FinTech, education and technology.
+          Project artefacts and case materials are added as they become shareable.
+        </p>
+      </div>
+      <div class="grid-3">
+        {industryProjects.map((p) => <ProjectCard project={p} />)}
+      </div>
+      <div class="tags" style="margin-top: 44px; justify-content: center;">
+        <span class="tag amber">Healthcare</span>
+        <span class="tag amber">Defence</span>
+        <span class="tag amber">FinTech</span>
+        <span class="tag amber">Public safety</span>
+        <span class="tag amber">Education</span>
+        <span class="tag amber">Economic development</span>
+      </div>
+    </div>
+  </section>
+
+<!-- Approach -->
   <section class="section alt">
     <div class="container split">
       <div class="reveal">
@@ -77,31 +112,6 @@ import { industryProjects } from '../data/projects.js';
           <strong>Embed</strong>
           <p>Capability stays in your team, with clear governance and documentation.</p>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Portfolio -->
-  <section class="section dark">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow">Partnership portfolio</span>
-        <h2>Selected collaborations and clients.</h2>
-        <p class="lede">
-          Organisations across healthcare, public safety, FinTech, education and technology.
-          Project artefacts and case materials are added as they become shareable.
-        </p>
-      </div>
-      <div class="grid-3">
-        {industryProjects.map((p) => <ProjectCard project={p} />)}
-      </div>
-      <div class="tags" style="margin-top: 44px; justify-content: center;">
-        <span class="tag amber">Healthcare</span>
-        <span class="tag amber">Defence</span>
-        <span class="tag amber">FinTech</span>
-        <span class="tag amber">Public safety</span>
-        <span class="tag amber">Education</span>
-        <span class="tag amber">Economic development</span>
       </div>
     </div>
   </section>
