@@ -97,7 +97,7 @@ export const projects = [
     featured: true,
     year: '2023–26',
     summary:
-      'Leading a GenAI customer-support solution delivering measurable operational efficiencies for a cloud services provider — from guardrail design to deployment.',
+      'KTP Lead for a GenAI customer-support solution delivering measurable operational efficiencies for a cloud services provider — from guardrail design to deployment.',
     tags: ['GenAI', 'LLM guardrails', 'Customer operations'],
     image: '/images/website_images_industry/metcloud.jpg',
   },
