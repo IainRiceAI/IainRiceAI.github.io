@@ -82,7 +82,7 @@ export const projects = [
     org: 'Rural Ibiza Startup',
     sector: 'Travel',
     kind: 'industry',
-    featured: false,
+    featured: true,
     year: '',//'2026',
     summary:
       'Tech advisor and interim CTO — developed AI strategy and delivered a booking platform for a rural technology business.',
