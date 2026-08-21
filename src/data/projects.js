@@ -79,7 +79,7 @@ export const projects = [
   },
   {
     title: 'Start Up AI-Enabled Platform',
-    org: 'Rural Ibiza Startup',
+    org: 'Rural Ibiza',
     sector: 'Travel',
     kind: 'industry',
     featured: true,
