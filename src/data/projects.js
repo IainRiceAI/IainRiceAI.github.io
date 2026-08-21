@@ -32,7 +32,7 @@ export const projects = [
     sector: 'Healthcare',
     kind: 'research',
     featured: true,
-    year: '2015–17',
+    year: '',//'2015–17',
     summary:
       'On-ward predictive analytics identifying at-risk children — providing up to 12 hours advance warning of cardiac arrest, with whole-ward visual analytics mapping patient deterioration.',
     tags: ['Predictive analytics', 'Clinical AI', 'Visual analytics'],
@@ -44,8 +44,8 @@ export const projects = [
     org: "Birmingham City University",
     sector: 'Machine Learning',
     kind: 'research',
-    featured: true,
-    year: '2023–26',
+    featured: false,
+    year: '',//'2023–26',
     summary:
       'PhD Project with Ziad Ali & Atif Azad demonstrating adversarial attacks against state-of-the-art AI algorithms. Published in CVPR.',
     tags: ['Machine Learning', 'Adversarial Attacks', 'Computer Vision'],
@@ -58,7 +58,7 @@ export const projects = [
     sector: 'UX Design',
     kind: 'research',
     featured: false,
-    year: '2023–26',
+    year: '',//'2023–26',
     summary:
       'PhD Project with Kirsty Link & Sayan Sarcar identifying limitations in dementia-oriented UX design.',
     tags: ['UX', 'Web Design', 'Dementia'],
@@ -71,11 +71,23 @@ export const projects = [
     sector: 'Defence',
     kind: 'research',
     featured: false,
-    year: '2012-15',
+    year: '',//'2012-15',
     summary:
       'PhD research building novel deep-learning architectures and AI-enabled smart alarms for undersea target identification, briefed to high-ranking military personnel.',
     tags: ['Deep learning', 'Anomaly detection', 'Defence intelligence'],
     image: '/images/website_images_research/sonar.jpg',
+  },
+  {
+    title: 'Start Up AI-Enabled Platform',
+    org: 'Rural Ibiza Startup',
+    sector: 'Travel',
+    kind: 'industry',
+    featured: false,
+    year: '',//'2026',
+    summary:
+      'Tech advisor and interim CTO — developed AI strategy and delivered a booking platform for a rural technology business.',
+    tags: ['Interim CTO', 'Platform delivery', 'AI strategy'],
+    image: '/images/website_images_industry/ri.jpg',
   },
   {
     title: 'Safer Streets — Crime Pattern Analytics',
@@ -83,7 +95,7 @@ export const projects = [
     sector: 'Public safety',
     kind: 'industry',
     featured: true,
-    year: '2024-26',
+    year: '',//'2024-26',
     summary:
       'Chief Data Scientist role: predictive analytics and dashboards identifying crime patterns and safe walking routes, helping reduce violence against women and girls (VAWG).',
     tags: ['Predictive policing', 'Dashboards', 'Public safety'],
@@ -95,7 +107,7 @@ export const projects = [
     sector: 'Cybersecurity / Cloud',
     kind: 'industry',
     featured: true,
-    year: '2023–26',
+    year: '',//'2023–26',
     summary:
       'KTP Lead for a GenAI customer-support solution delivering measurable operational efficiencies for a cloud services provider — from guardrail design to deployment.',
     tags: ['GenAI', 'LLM guardrails', 'Customer operations'],
@@ -107,7 +119,7 @@ export const projects = [
     sector: 'Consultancy',
     kind: 'industry',
     featured: false,
-    year: '2022-26',
+    year: '',//'2022-26',
     summary:
       'AI-assisted Change Management solution for addressing Mindset alignment in complex business environments.',
     tags: ['Data storytelling', 'Dashboards', 'Change Management'],
@@ -119,7 +131,7 @@ export const projects = [
     sector: 'FinTech',
     kind: 'industry',
     featured: false,
-    year: '2023-26',
+    year: '',//'2023-26',
     summary:
       'Startup AI advisor developing strategies for maximising data value, LLM integration and predictive analytics in wealth management.',
     tags: ['AI strategy', 'FinTech', 'LLM integration'],
@@ -131,7 +143,7 @@ export const projects = [
     sector: 'Leisure',
     kind: 'industry',
     featured: false,
-    year: '2023-26',
+    year: '',//'2023-26',
     summary:
       'Delivering dashboards, database analysis and GenAI tools to improve institutional decision-making.',
     tags: ['Dashboards', 'GenAI', 'Decision support'],
@@ -143,7 +155,7 @@ export const projects = [
     sector: 'Technology',
     kind: 'industry',
     featured: false,
-    year: '2026',
+    year: '',//'2026',
     summary:
       'KTP Project leveraging GenAI with Guardrails for regulated knowledge distillation and agentic support.',
     tags: ['Agentic AI', 'Knowledge management', 'Data curation'],
@@ -155,23 +167,11 @@ export const projects = [
     sector: 'Technology',
     kind: 'industry',
     featured: false,
-    year: '2026',
+    year: '',//'2026',
     summary:
       'Five student-led consultancy projects delivering multi-agent operational solutions including data management, knowledge search and process automation.',
     tags: ['Multi-agent systems', 'Automation', 'Legacy modernisation'],
     image: '/images/website_images_industry/beeswift.jpg',
-  },
-  {
-    title: 'Booking Platform & AI Strategy',
-    org: 'Rural Ibiza Startup',
-    sector: 'Travel',
-    kind: 'industry',
-    featured: false,
-    year: '2026',
-    summary:
-      'Tech advisor and interim CTO — developed AI strategy and delivered a booking platform for a rural technology business.',
-    tags: ['Interim CTO', 'Platform delivery', 'AI strategy'],
-    image: '/images/website_images_industry/ri.jpg',
   },
   {
     title: 'Automated Menu Generation Tool',
@@ -179,7 +179,7 @@ export const projects = [
     sector: 'Leisure',
     kind: 'industry',
     featured: false,
-    year: '2026',
+    year: '',//'2026',
     summary:
       'Student-led project generating restaurant menu designs from technical briefs and competitor analysis with GenAI.',
     tags: ['Consultancy', 'Vision Language Models', 'Automated Design'],
@@ -191,7 +191,7 @@ export const projects = [
     sector: 'Healthcare',
     kind: 'research',
     featured: false,
-    year: 'Ongoing',
+    year: '',//'Ongoing',
     summary:
       'Diabetes outcome prediction, medical image analysis for dementia characterisation, EEG analysis for intraoperative neurological monitoring and pre-eclampsia outcome prediction.',
     tags: ['Medical imaging', 'Outcome prediction', 'EEG analysis'],
@@ -203,7 +203,7 @@ export const projects = [
     sector: 'Education',
     kind: 'research',
     featured: false,
-    year: 'Current',
+    year: '',//'Current',
     summary:
       'Supporting the transition of female, black, disabled and low-income learners into AI fields.',
     tags: ['Widening participation', 'AI education', 'EDI'],
