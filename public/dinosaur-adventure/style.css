@@ -37,8 +37,8 @@
   border-bottom: 12px solid transparent;
   pointer-events: none;
 }
-.moveLeft .directionArrow { border-right: 20px solid white; }
-.moveRight .directionArrow { border-left: 20px solid white; }
+.moveLeft{background: #df4c4c; /* RED */} .directionArrow { border-right: 20px solid white; }
+.moveRight{background: #34ac63; /* GREEN */} .directionArrow { border-left: 20px solid white; }
 .touchControls button:active { transform: translateY(2px); box-shadow: none; }
 @media(max-width:580px) {
   .touchControls .moveButton { min-width: 68px; min-height: 58px; }
