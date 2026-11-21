@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dinosaur Adventure!</title><link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="shell">
+<header><div><span class="eyebrow">A LITTLE GAME YOU CAN CHANGE</span><h1>🦕 Dinosaur Adventure!</h1></div><button id="editHelp" class="small" type="button">✏️ How to edit</button></header>
+<main>
+<div class="topbar"><span id="dinoLabel">Choose your dinosaur</span><span id="hearts"></span><span id="score">🥚 0</span><span id="powerDisplay">⚡ Ready!</span></div>
+<div id="stage"><canvas id="game" width="960" height="540" aria-label="Dinosaur platform game"></canvas><div id="overlay" class="overlay"><div class="panel" id="panel"></div></div></div>
+<div class="touchControls"><div class="touchCluster"><button data-key="ArrowLeft" aria-label="Move left">◀</button><button data-key="ArrowRight" aria-label="Move right">▶</button></div><div class="touchCluster"><button data-key="Space">JUMP</button><button data-key="KeyX" class="powerButton">⚡ POWER</button></div></div>
+<div class="hint"><strong>Controls:</strong> ← → move · SPACE jump · X special power · P pause · R restart. Change <code>settings.js</code> to customise the game!</div>
+</main><footer>Made for a young game designer ✨ · Works offline · No accounts or downloads needed to play</footer>
+</div>
+<script src="settings.js"></script><script src="game.js"></script>
+</body></html>
