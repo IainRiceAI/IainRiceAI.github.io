@@ -13,18 +13,18 @@
 */
 window.GAME_SETTINGS = {
   world: {
-    sky: "#9BDFFF",            // Sky colour. Try "#FFB5DF" for pink!
-    grass: "#83CB64",          // Grass colour. Try "#D5A8F0"
-    earth: "#B67B47",          // Underground colour
-    sunshine: "#FFD966",       // Colour of the sun
+    sky: "#FFB5DF",            // Sky colour. Try "#FFB5DF" for pink!
+    grass: "#3CAF07",          // Grass colour. Try "#D5A8F0"
+    earth: "#AF610D",          // Underground colour
+    sunshine: "#F4E90E",       // Colour of the sun
     hill: "#75C9B6",           // Distant hills
     levelLength: 3200,         // How many pixels long is the level?
-    gravity: 1250,             // Bigger = dinosaurs fall faster
-    eggSpacing: 240,           // Smaller = more eggs to collect
+    gravity: 1000,             // Bigger = dinosaurs fall faster
+    eggSpacing: 200,           // Smaller = more eggs to collect
     raptorSpacing: 480,        // Smaller = more raptor baddies
     platforms: true,           // Set false to hide raised platforms
     cactusObstacles: true,     // Set false to remove the spiky cacti
-    cactusHeight: 42,          // Make cacti taller or shorter (try 30 or 55)
+    cactusHeight: 28,          // Make cacti taller or shorter (try 30 or 55)
     bossApproachPlatform: false,// Small stepping stone just before the T. rex
     narrowTunnels: true        // Set false to remove low tunnels
   },
@@ -34,7 +34,7 @@ window.GAME_SETTINGS = {
       colour: "#43B77A",       // Dino body colour
       speed: 205,              // Slow but strong!
       jump: 520,               // Bigger = jumps higher
-      lives: 4,                // Has ONE EXTRA life
+      lives: 5,                // Has ONE EXTRA life
       power: "CHARGE",
       powerSeconds: 1.0,       // How long charge lasts
       cooldownSeconds: 5       // How long to wait before power again
@@ -44,7 +44,7 @@ window.GAME_SETTINGS = {
       colour: "#669FE5",
       speed: 235,
       jump: 490,
-      lives: 3,
+      lives: 4,
       power: "STOMP",
       powerSeconds: 0.7,
       cooldownSeconds: 5
@@ -53,9 +53,9 @@ window.GAME_SETTINGS = {
     troodon: {
       name: "Troodon",
       colour: "#B076E9",
-      speed: 300,              // Fastest dinosaur!
+      speed: 420,              // Fastest dinosaur!
       jump: 505,
-      lives: 2,                // Only TWO lives
+      lives: 3,                // Only TWO lives
       power: "SUPER JUMP",
       powerSeconds: 0.7,
       cooldownSeconds: 4
@@ -63,7 +63,7 @@ window.GAME_SETTINGS = {
   },
   boss: {
     appearAt: 2770,           // Pixel position where T. rex arrives
-    health: 3,                // Hits needed to defeat T. rex
+    health: 2,                // Hits needed to defeat T. rex
     speed: 125,               // How fast T. rex charges
     width: 95,                // Boss size: smaller = easier to jump over
     height: 75,               // Normal jumps can land on its head
