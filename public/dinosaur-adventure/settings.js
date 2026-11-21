@@ -19,7 +19,7 @@ window.GAME_SETTINGS = {
     sunshine: "#F4E90E",       // Colour of the sun
     hill: "#75C9B6",           // Distant hills
     levelLength: 3200,         // How many pixels long is the level?
-    gravity: 1000,             // Bigger = dinosaurs fall faster
+    gravity: 250,             // Bigger = dinosaurs fall faster
     eggSpacing: 200,           // Smaller = more eggs to collect
     raptorSpacing: 480,        // Smaller = more raptor baddies
     platforms: true,           // Set false to hide raised platforms
