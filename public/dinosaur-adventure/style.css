@@ -1,1 +1,45 @@
 :root{color-scheme:light;font-family:system-ui,-apple-system,Segoe UI,sans-serif;background:#f1f5ed;color:#24423c}*{box-sizing:border-box}body{margin:0;padding:18px}#shell{max-width:1100px;margin:auto}header{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:5px 0 18px}h1{font-size:clamp(24px,4vw,38px);margin:2px 0}.eyebrow{font-size:11px;letter-spacing:2px;font-weight:800;color:#4b8675}button{font:inherit;cursor:pointer;border:0;border-radius:12px;font-weight:800}.small{background:white;padding:10px 14px;box-shadow:0 2px 8px #0001}.topbar{background:#fff;border:2px solid #d5e7d9;border-bottom:0;display:flex;gap:15px;justify-content:space-between;align-items:center;padding:11px 18px;border-radius:16px 16px 0 0;font-weight:800;flex-wrap:wrap}.topbar span{white-space:nowrap}#powerDisplay{color:#4b7d43}#stage{position:relative;background:#a9e2ff;overflow:hidden;border:2px solid #d5e7d9;border-radius:0 0 16px 16px}canvas{width:100%;height:auto;display:block;touch-action:none}.overlay{position:absolute;inset:0;background:#152e38a3;display:flex;align-items:center;justify-content:center;padding:20px}.overlay.hidden{display:none}.panel{background:#fffdf2;color:#24423c;box-shadow:0 15px 45px #0004;border:5px solid #ffe3a3;border-radius:24px;max-width:630px;width:100%;padding:clamp(15px,3vw,28px);text-align:center;max-height:100%;overflow:auto}.panel h2{font-size:clamp(23px,3.3vw,35px);margin:0 0 8px}.panel p{margin:8px 0 14px}.choices{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:15px 0}.choice{background:#eaf5f3;color:#234138;border:3px solid transparent;min-width:150px;padding:12px;display:flex;flex-direction:column;align-items:center;gap:4px}.choice:hover,.choice:focus{border-color:#409d7b}.choice .emoji{font-size:34px}.choice small{font-size:12px;line-height:1.5;font-weight:500}.primary{padding:12px 24px;color:white;background:#238a69;box-shadow:0 4px 0 #176f55;font-size:18px}.primary:hover{background:#147957}.touchControls{display:flex;justify-content:space-between;gap:15px;padding:12px 0}.touchCluster{display:flex;gap:8px}.touchControls button{min-width:66px;min-height:52px;background:white;border:2px solid #bbd8cf;box-shadow:0 3px 0 #a9cbbf;color:#32594d;touch-action:none}.touchControls .powerButton{background:#ffe9a3;color:#704b00;border-color:#ffc761}.hint{margin:4px 0 14px;color:#45605b;line-height:1.6}code{background:#e5eddf;border-radius:5px;padding:2px 5px}footer{text-align:center;font-size:13px;color:#648075;padding:8px}@media(max-width:580px){body{padding:8px}.topbar{font-size:12px;padding:9px}.choice{min-width:110px;padding:7px}.panel{padding:10px;border-width:3px}.panel p{font-size:13px}.choices{margin:8px 0}.touchControls button{min-width:55px;min-height:46px}header .small{font-size:12px}}
+
+/* MOBILE CONTROL FIX: prevent selecting button text / long-press menus. */
+.touchControls, .touchControls * {
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  touch-action: none;
+}
+.touchControls button {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-appearance: none;
+  appearance: none;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 12px;
+  cursor: pointer;
+}
+/* The arrows are CSS shapes, not selectable text characters. */
+.touchControls .moveButton { min-width: 74px; min-height: 60px; }
+.touchControls .moveLeft {
+  background: #df4c4c;
+  border-color: #a72c2c;
+  box-shadow: 0 3px 0 #922525;
+}
+.touchControls .moveRight {
+  background: #34ac63;
+  border-color: #207847;
+  box-shadow: 0 3px 0 #16663a;
+}
+.directionArrow {
+  display: block;
+  width: 0;
+  height: 0;
+  border-top: 12px solid transparent;
+  border-bottom: 12px solid transparent;
+  pointer-events: none;
+}
+.moveLeft .directionArrow { border-right: 20px solid white; }
+.moveRight .directionArrow { border-left: 20px solid white; }
+.touchControls button:active { transform: translateY(2px); box-shadow: none; }
+@media(max-width:580px) {
+  .touchControls .moveButton { min-width: 68px; min-height: 58px; }
+}
